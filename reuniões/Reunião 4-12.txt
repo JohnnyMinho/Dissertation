@@ -1,0 +1,5 @@
+Procurar papers com um bom número de citações para estado da arte e após isto procurar artigos com um bom balanço entre citações (qualidade) e atualidade.
+
+Survey papers bem citados são bons para ver as tecnologias atuais visto que estes já compilam e resumem uma boa quantidade de dados acerca das tecnologias usadas na área.
+
+Acabar índice e estado da arte

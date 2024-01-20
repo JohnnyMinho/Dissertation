@@ -1,0 +1,21 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ipl/isel/defaults.ldf
+%% NOVA thesis configuration file
+%%
+%% Customization for ISEL-IPL (strings and cover)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\typeout{NT FILE ipl/isel/ipl-isel-meb-defaults.ldf}%
+
+\input{NOVAthesisFiles/Schools/ipl/isel/ipl-isel-defaults.ldf}
+
+% Spine info
+\spine(logo)={ipl-logo/0,ipl-isel-logo/0/1.5,ipl-isel-meb-logo/0,2cm/meb-text/0/1.8}
+\spine(box,logo,margin,sep):={5mm}
+
+\spine(box,date,angle)={-90}
+\spine(author)={\thedocauthor(name,short)}
+
+\spine(box,logo,len):=?{4.1cm}
+\spine(box,date,len):=?{1.0cm}
+% \spine(box,author,len):=?{5.0cm}

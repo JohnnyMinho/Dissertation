@@ -1,0 +1,106 @@
+%!TEX root = ../template.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% fix-babel.tex
+%% NOVA thesis configuration file
+%%
+%% Minor fixes to babel translation to portuguese
+%%
+%% Order and lnguage for printing the abstracts depending on the language
+%% These macros are just informative for now (it is hardcoded in the
+%%   novathesis.ldf file)… this must be fixed in the future!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\typeout{NT FILE fix-babel.tex}%
+
+% Replace "Conteúdo" with "Índice"
+% Replace "Índice" with "Índice Remissivo"
+% "Listings" in Portuguese
+
+
+\optionlistdo{/@nt/lang/short}{\options{/novathesis/babel/#1/keys/.new list}}
+
+\def\mysplit#1/#2=#3\@nil#4#5#6{\def#4{#1}\def#5{#2}\def#6{#3}}
+\newcommand{\ntlangsetup}{\@ifstar{\ntlangsetupifndef}{\ntlangsetupdef}}
+\newcommand{\ntlangsetupdef}[2][name]{%
+  \mysplit#2\@nil{\@ntslang}{\@ntskey}{\@ntsval}%
+  % \typeout{KEY SET DEF (/novathesis/babel/\@ntslang/\@ntskey#1)=[\@ntsval]}\KEYSETDEF%
+  \ifoptiondefined{/novathesis/babel/\@ntslang/\@ntskey#1}{%
+    \option@undef{/novathesis/babel/\@ntslang/\@ntskey#1}%
+  }{}%
+  \options{/novathesis/babel/\@ntslang/keys/.expanded/.newpush = \@ntskey#1#1}%
+  \options{/novathesis/babel/\@ntslang/\@ntskey#1/.expanded/.new value = \@ntsval}%
+}
+\newcommand{\ntlangsetupifndef}[2][name]{%
+  \mysplit#2\@nil{\@ntslang}{\@ntskey}{\@ntsval}%
+  \ifoptioncontains{/novathesis/babel/\@ntslang/keys/.expanded}{\@ntskey#1}{}{%
+    % \typeout{KEY SET IFNDEF (/novathesis/babel/\@ntslang/\@ntskey#1)=[\@ntsval]}\KEYSETDEF%
+    % \typeout{KEY SET IFNDEF (/novathesis/babel/\@ntslang/\@ntskey)=[\@ntsval]}%
+    \options{/novathesis/babel/\@ntslang/keys/.expanded/.newpush = \@ntskey#1}%
+    \options{/novathesis/babel/\@ntslang/\@ntskey#1/.expanded/.new value = \@ntsval}%
+  }
+}
+
+
+\addto\captionsportuguese{%
+  \defineshorthand{"-}{\babelhyphen{repeat}}% generates a hyphen that will repeat on a new line
+}
+
+\ntlangsetup*{pt/contents=Índice}
+\ntlangsetup*{pt/listfigure=Índice de Figuras}
+\ntlangsetup*{pt/listtable=Índice de Tabelas}
+\ntlangsetup*{pt/index=Índice Remissivo}
+\ntlangsetup*{pt/lstlistlisting=Índice de Listagens}
+\ntlangsetup*[caption]{pt/listoflistings=Índice de Listagens}
+\ntlangsetup*{pt/lstlisting=Listagem}
+\ntlangsetup*[caption]{pt/listings=Listagem}
+\ntlangsetup*{pt/annex=Anexo}
+\ntlangsetup*{pt/annexpl=Anexos}
+\ntlangsetup*{pt/appendixpl=Apêndices}
+
+% \ntlangsetup*{en/lstlistlistingname=List of Listings}%
+% \ntlangsetup*[caption]{en/listoflistings=List of Listings}%
+% \ntlangsetup*{en/lstlisting=Listing}%
+\ntlangsetup*{en/annex=Annex}
+\ntlangsetup*{en/annexpl=Annexes}
+\ntlangsetup*{en/appendixpl=Appendices}
+
+\ntlangsetup*{fr/lstlistlisting=Listes de Code}%
+\ntlangsetup*[caption]{fr/listoflistings=Listes de Code}%
+\ntlangsetup*{fr/lstlisting=Listing}%
+\ntlangsetup*{fr/annex=Annexe}
+\ntlangsetup*{fr/annexpl=Annexes}
+\ntlangsetup*{fr/appendixpl=Appendices}
+
+\ntlangsetup*{it/lstlistlisting=Listatos}%
+\ntlangsetup*[caption]{it/listoflistings=Listatos}%
+\ntlangsetup*{it/annex=Annesso}
+\ntlangsetup*{it/annexpl=Annessi}
+\ntlangsetup*{it/appendixpl=Appendici}
+
+% \ifluatex%
+%   \babelposthyphenation{portuguese}{.=.}{%
+%     {},%
+%     { no = -, pre = -, post = -, data = 1 },%
+%     {}%
+%   }%
+% \fi
+
+% For compatibility with Babel version < 3.51
+% \ifcsname setlocalecaption\endcsname\else
+  \renewcommand*{\setlocalecaption}[3]{%
+    % \typeout{SETLOCALECAPTION [#1] [#2] [#3]}\SETLOCALECAPTION
+    \expandafter\addto\csname captions#1\endcsname{\csdef{#2}{#3}}%
+  }%
+% \fi
+
+\optionlistdo{/@nt/lang/loaded}{%
+  % \options{/@nt/lang/shorttolong=#1}%
+  % \edef\@ltu{\option{/@nt/lang/shorttolong}}%
+  % \typeout{KEY=#1/\@ltu}\KEY%
+  \optionlistdo{/novathesis/babel/#1/keys}{%
+    % \typeout{KEY(#1)=[##1=\option{/novathesis/babel/#1/##1}]}%
+    % \typeout{KEY SET2 (#1/##1)=[\option{/novathesis/babel/#1/##1}]}\KEYSETTWO%
+    % \typeout{KEY SET3={\@ltu}{##1}{\option{/novathesis/babel/#1/##1}}}\KEYSETHREE%
+    \setlocalecaption{\thelanglong(#1)}{##1}{\option{/novathesis/babel/#1/##1}}%
+  }%
+}

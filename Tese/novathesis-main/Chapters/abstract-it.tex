@@ -1,0 +1,42 @@
+%!TEX root = ../template.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% abstract-it.tex
+%% NOVA thesis document file
+%%
+%% Abstract in Italian
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\typeout{NT FILE abstract-it.tex}%
+
+
+\textbf{¡Esta es una traducción de “Google Translate” de la versión en inglés! ¡Reparaciones y correcciones son bienvenidas!}
+
+Independientemente del idioma en el que esté escrita la disertación, generalmente hay al menos dos resúmenes: un resumen en el mismo idioma que el texto principal y otro resumen en algún otro idioma.
+
+El orden de los resúmenes varía según la escuela. Si su escuela tiene regulaciones específicas con respecto al orden de los resúmenes, la plantilla \gls{novathesis} (\LaTeX) las respetará. De lo contrario, la regla por defecto en la plantilla \gls{novathesis} es tener en primer lugar el resumen en \emph{el mismo idioma que el texto principal}, y luego el resumen en \emph{el otro idioma}. Por ejemplo, si la disertación está escrita en portugués, el orden de los resúmenes será primero en portugués y luego en inglés, seguido del texto principal en portugués. Si la disertación está escrita en inglés, el orden de los resúmenes será primero en inglés y luego en portugués, seguido del texto principal en inglés.
+%
+Por ejemplo, para un documento principal escrito en alemán con resúmenes escritos en alemán, inglés e italiano (en este orden) use:
+
+\begin{verbatim}
+    \ntsetup{abstractorder={<LANG_1>,...,<LANG_N>}}
+    \ntsetup{abstractorder={<MAIN_LANG>={<LANG_1>,...,<LANG_N>}}}
+\end{verbatim}
+
+En cuanto a su contenido, los resúmenes no deben exceder una página y pueden responder a las siguientes preguntas (es fundamental adaptarse a las prácticas habituales de su área científica):
+\begin{verbatim}
+    \ntsetup{abstractorder={de={de,en,it}}}
+\end{verbatim}
+
+Per quanto riguarda i suoi contenuti, gli abstract non devono superare una pagina e possono rispondere alle seguenti domande (è essenziale adeguarsi alle pratiche abituali della propria area scientifica):
+
+\begin{itemize}
+\item Qual è il problema?
+\item Perché è interessante?
+\item Qual è la soluzione?
+\item Quello che segue dalla soluzione?
+\end{itemize}
+
+% Palavras-chave do resumo em Inglês
+\begin{keywords}
+Parole chiave 1, Parole chiave 2, Parole chiave 3
+\end{keywords}

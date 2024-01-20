@@ -1,0 +1,35 @@
+Pensar num possível título que consiga cobrir um número amplo de casos usos visto que o seria de interesse deixar os casos uso em aberto.
+IoT em redes veiculares é uma novelty pelo que é o melhor caso.
+
+Possível: Integração do paradigma IoT em Comunicações V2X.
+---
+Integração do paradigma IoT e possíveis aplicações para/nas Comunicações V2X. 
+Integração do paradigma IoT e possíveis usos nas Comunicações V2X.
+--- Dois melhores títulos já que mantém o título amplo o suficiente.
+Integração do paradigma IoT e usos para Comunicações V2X.
+Integração do paradigma IoT para assistência às Comunicações V2X. -> Não sei se é a melhor referências porque limita as possiveís aplicações (Dá a entender que o IoT passa a um role secundário?).
+
+Conceitos a rever:
+Internet of Vehicles
+Tecnologias e protocolos indicados para diferentes casos usos (safety and non-safety oriented).
+
+Não fixar os casos usos.
+
+Calendarização -> Maior divisão das tarefas.
+
+Documento Dissertação:
+
+Passar as coisas do plano para a tese.
+
+Estado da arte -> Contextualização (termos e afins) e estado da arte mesmo é o uso de x artigos para descrever os usos atuais das tecnologias dentro do contexto sugerido pelo tema e caso uso.
+Cuidado, valorização grande do estado da arte.
+índice bem constituído. Procurar referências bem definidos, estudos, teses, doutoramentos, livros, etc.
+
+Em caso de dúvida de artigos enviar para os professores para eles validarem.
+
+Tentar saber se existem estudos com dados simulados ou físicos para poder prever possiveís características.
+
+E-mail stor github: adcosta  
+
+Pelo que entendi Internet of Vehicles é uma maneira de pegar nos aspectos interessantes do IoT -> comunicações entre todos os dispostivos associados a um através da internet para : realize the information exchange between the vehicle and all entities that may be related to it. IoV's goals are to reduce accidents, ease traffic congestion, and provide other information services. (https://ieeexplore.ieee.org/abstract/document/9088328?casa_token=57oMwqb5lqwAAAAA:VIWlWpjw_wXXgL6XdUgOwZYBxV5Ob4u47NdjUjCXoIWTk87uM7GHUm9HZaM14k4Fgmn10YjQ8g).
+Será que posso dizer que Internet of Vehicles é simplesmente a ponte de adaptação dos protocolos usados em IoT para Redes ad-hoc? Ou seja a ligação destas redes com o próprio paradigma IoT?
