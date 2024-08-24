@@ -10,7 +10,7 @@ Quanto à escolha de um MQTT Broker existem duas opções em consideração de m
 
 Ambos desempenham as suas funções com uma qualidade razoável sendo a escolha do Mosquitto a mais provável já que este é totalmente open-source (HiveMQ na sua versão de comunidade também o é) e pelo facto
 de ser mais leve e mais configurável que o HiveMQ. Contudo é necessário apontar que o HiveMQ oferece uma solução gratuíta (mas limitada) em cloud.
-Até agora só foram realizados testes com o broker a correr na mesma rede.
+Até agora só foram realizados testes com o broker a correr na mesma rede e em uma maquina full size, atualmente está a se tentar fazer com que o broker esteja em um raspberry pi de modo a que se possa usar um computador como um end user.
 
 Neste caso uso foi utilizada uma placa ESP32 Devkit c4 de modo a realizar as operações que iriam ser realizadas pelos componentes integrados na bicicleta (neste caso uso apenas foi utilizado o protocolo Wi-Fi).
 Até ao momento as operaçoes realizadas foram as seguintes:
