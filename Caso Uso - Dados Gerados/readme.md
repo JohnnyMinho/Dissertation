@@ -1,7 +1,7 @@
 Caso Uso - Dados Gerados
 
 Este caso uso têm por objetivo estudar se a recolha, envio e distribuição das posições de uma x quantidade de bicicletas é possivel.
-Para este fim foi realizada uma simulação no simulador de mobilidade SUMO da qual foram extraídas as posições de 10 bicicletas, sendo a extração realizada através da aplicação do argumento -fcd-output na execução da simulação através da linha de comandos.
+Para este fim foi realizada uma simulação no simulador de mobilidade SUMO da qual foram extraídas as posições de 10 bicicletas. Esta extração foi realizada através da aplicação do argumento -fcd-output na execução da simulação através da linha de comandos.
 De modo a transformar o ficheiro criado num ficheiro CSV foi utilizada a ferramenta xml2csv.
 
 Quanto à escolha de um MQTT Broker existem duas opções em consideração de momento:
@@ -20,3 +20,8 @@ Até ao momento as operaçoes realizadas foram as seguintes:
 - Envio de 50 posições, constituídas pelas latitude e longitude, de uma das bicicletas.
 
 Através deste caso uso foi possível determinar, até agora, que seria uma boa ideia ter um tópico por bicicleta.
+
+Em falta:
+
+- Implementar o código para uma placa esp32 que irá simular um RSU;
+- Testar a recolha de dados pelo RSU. 
