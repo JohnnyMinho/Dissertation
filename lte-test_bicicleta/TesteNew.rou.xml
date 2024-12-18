@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-12-05 15:06:25 by Eclipse SUMO netedit Version 1.21.0
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- VTypes -->
+    <vType id="Ambulance" vClass="emergency" guiShape="emergency" color="12,58,240,0"/>
+    <!-- Routes -->
+    <route id="r_1" edges="E22"/>
+    <route id="r_7" edges="-E0 A4A3 A3A2 A2A1 A1A0 A0B0 B0C0 C0D0 D0E0 E0E1 E1E2 E2E3 E3E4 E4D4 D4C4 C4B4 B4A4 A4A3"/>
+    <!-- Vehicles, persons and containers (sorted by depart) -->
+    <flow id="f_0" type="DEFAULT_BIKETYPE" begin="0.00" route="r_7" end="0.00" number="20"/>
+    <flow id="f_1" type="Ambulance" begin="0.00" route="r_1" end="0.00" number="1">
+        <stop parkingArea="pa_1" parking="1"/>
+    </flow>
+</routes>

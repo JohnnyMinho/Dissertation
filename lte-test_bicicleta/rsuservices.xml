@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+	<service type="artery.application.EmergencyServiceRSU">
+		<listener port="8001"/>
+	</service>
+</services>

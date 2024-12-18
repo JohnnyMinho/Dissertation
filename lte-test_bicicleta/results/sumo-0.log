@@ -1,0 +1,15 @@
+***Starting server on port 36285 ***
+Loading net-file from 'Bycicle_grid.net.xml' ... done (38ms).
+Loading additional-files from 'TesteNew.add.xml' ... done (13ms).
+Loading done.
+Simulation started with time: 0.00.
+Simulation ended at time: 0.00.
+Performance:
+ Duration: 43.89s
+ TraCI-Duration: 0.00s
+ Real time factor: 0
+ UPS: 0.000000
+Vehicles:
+ Inserted: 0
+ Running: 0
+ Waiting: 0

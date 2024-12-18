@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-12-05 15:06:25 by Eclipse SUMO netedit Version 1.21.0
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- StoppingPlaces -->
+    <parkingArea id="pa_1" name="Ambulance_Parking" lane="E22_0" startPos="16.54" endPos="26.54" roadsideCapacity="5" width="6.50" length="6.50"/>
+    <!-- Other additionals -->
+    <rerouter id="rr_0" edges="A4A3" pos="26.33,373.30">
+        <interval begin="0.00" end="3600.00">
+            <destProbReroute id="E3E4" probability="1.00"/>
+        </interval>
+    </rerouter>
+    <rerouter id="rr_1" edges="E3E4" pos="394.86,366.71">
+        <interval begin="0.00" end="3600.00">
+            <destProbReroute id="A4A3" probability="1.00"/>
+        </interval>
+    </rerouter>
+    <!-- Shapes -->
+    <poly id="Hospital_layout" color="red" fill="1" layer="0.00" shape="205.802941,195.303056 205.802941,147.440454 228.651922,147.440454 228.651922,173.295879 259.317659,173.295879 259.317659,162.833451 293.831646,162.833451 293.831646,195.543571 205.682683,195.423314 205.923199,193.499189 205.802941,195.303056"/>
+    <poi id="Hospital_POI" icon="pin" color="0,33,255" layer="202.00" x="206.61" y="192.07"/>
+</additional>
