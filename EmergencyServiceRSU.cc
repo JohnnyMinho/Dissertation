@@ -48,39 +48,11 @@ void EmergencyServiceRSU::initialize()
     
     initUseCases();
     subscribe(SharedSignal_MQTT_To_Den);
-    /*if (isSubscribed(SharedSignal_MQTT_To_Den, this)) {
-        EV_INFO << "Subscribed to signal" << "\n";
-        char text1[128];
-        text1[128] = '\0';
-        strcat(text1,"Taga1");
-        getSimulation()->getActiveEnvir()->alert(text1);
-    }else{
-        EV_WARN << "Not subscribed to signal" << "\n";
-        char text1[128];
-        text1[128] = '\0';
-        strcat(text1,"Taga2");
-        getSimulation()->getActiveEnvir()->alert(text1);
-    }*/
-
-    /*EmergPort = par("EmergPort");
-    EmergSocket.setOutputGate(gate("udpOut"));
-    EmergSocket.bind(inet::L3Address(), EmergPort);*/
-
-    /*if (stage == InitStages::Prepare) {
-        
-        //StartConfigTrigger = new cMessage("ConfiguringNode");
-
-    } else if (stage == InitStages::Self) {
-        //scheduleAt(simTime() + uniform(0.0, StartConfigTime), StartConfigTrigger);
-        //SubAnsMchTrigger = new cMessage("AnswerMachineSubscribe");
-        
-    }*/
-    cModule* currentModule = getParentModule();
-    EV_INFO << "Current Module Path->" << currentModule->getSubmodule("EmergencyServiceRSU")->getFullPath() << "\n";
-    std::string test1;
-    test1 = currentModule->getSubmodule("EmergencyServiceRSU")->getFullPath();
-    getSimulation()->getActiveEnvir()->alert(test1.c_str());
     
+    cModule* currentModule = getParentModule();
+    StartConfigTrigger = new cMessage("ConfiguringNode");
+    
+    scheduleAt(simTime() + uniform(0.0, StartConfigTime), StartConfigTrigger);
 } 
 
 void EmergencyServiceRSU::initUseCases()
@@ -108,12 +80,11 @@ void EmergencyServiceRSU::initUseCases()
             }
         }
     }
-    emit(SharedSignal_MQTT_To_Den, 10);
 }
 
 void EmergencyServiceRSU::finish()
 {
-    EmergSocket.close();
+    //AmbulanceSocket.close();
 }
 
 void EmergencyServiceRSU::receiveSignal(cComponent*, simsignal_t signal, cObject* obj, cObject*)
@@ -218,7 +189,6 @@ void EmergencyServiceRSU::fillRequest(vanetza::btp::DataRequestB& request)
 
 int EmergencyServiceRSU::numInitStages() const
 {
-    
     return artery::InitStages::Total;
 }
 
@@ -226,6 +196,8 @@ void EmergencyServiceRSU::ProcessSOS(MQTTPacket& SubscribePacket){
     //We need to extract the position of the bycicle and then create and send a emergency vehicle towards it
     
 }
+
+
 
 /*void EmergencyServiceRSU::processPacket(cPacket* pkt)
 {
@@ -244,8 +216,11 @@ void EmergencyServiceRSU::ProcessSOS(MQTTPacket& SubscribePacket){
 
 void EmergencyServiceRSU::handleMessage(cMessage* msg)
 {
-    EV_WARN << "Message Received" << "\n";
-    
+    if (msg->isSelfMessage()) {
+        if(msg == StartConfigTrigger){
+            ConfigNode();
+        }
+    }
 }
 
 void EmergencyServiceRSU::TestAccessMQTT(){
@@ -255,4 +230,14 @@ void EmergencyServiceRSU::TestAccessMQTT(){
     getSimulation()->getActiveEnvir()->alert(text1);
 }
 
+void EmergencyServiceRSU::ConfigNode()
+{
+    //AmbulancePort = par("AmbulanceSystemPort");
+    //AmbulanceSocket.setOutputGate(gate("udpOut"));
+    //AmbulanceSocket.bind(inet::L3Address(), AmbulancePort);
+}
+
+
 } // namespace artery
+
+

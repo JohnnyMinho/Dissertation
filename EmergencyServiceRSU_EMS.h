@@ -1,7 +1,7 @@
 
 
-#ifndef EMERGENCYSERVICERSU_H_
-#define EMERGENCYSERVICERSU_H_
+#ifndef EmergencyServiceRSU_EMS_H_
+#define EmergencyServiceRSU_EMS_H_
 
 #include "artery/application/den/Memory.h"
 #include "artery/application/den/AdaptedUseCase.h"
@@ -16,6 +16,14 @@
 #include <cstdint>
 #include <list>
 #include <memory>
+#include "traci/Angle.h"
+#include "traci/Boundary.h"
+#include "traci/NodeManager.h"
+#include "traci/Listener.h"
+#include "traci/Position.h"
+#include "traci/API.h"
+#include "traci/SubscriptionManager.h"
+#include "artery/application/AmbulanceSystem.h"
 
 class MQTTPacket;
 
@@ -24,12 +32,13 @@ namespace artery
 
 class Timer;
 
-class EmergencyServiceRSU : public ItsG5BaseService
+class EmergencyServiceRSU_EMS : public ItsG5BaseService, public traci::Listener
 {
     public:
-        EmergencyServiceRSU();
+        EmergencyServiceRSU_EMS();
         void initialize() override;
         void receiveSignal(omnetpp::cComponent*, omnetpp::simsignal_t, omnetpp::cObject*, omnetpp::cObject*) override;
+        std::string CheckAvailableAmbulance(MQTTPacket&,bool);
         //void handleMessage(omnetpp::cMessage*) override;
         void indicate(const vanetza::btp::DataIndication&, std::unique_ptr<vanetza::UpPacket>) override;
         void trigger() override;
@@ -40,6 +49,8 @@ class EmergencyServiceRSU : public ItsG5BaseService
 
         ActionID_t requestActionID();
         void sendDenm(vanetza::asn1::Denm&&, vanetza::btp::DataRequestB&);
+        void sendAmbulanceRequest(); //vanetza::btp::DataRequestB& request
+        void sendAmbulanceRequest_Temp(std::vector<std::string> Route_Steps_Temp,std::string AmbulanceID);
         void TestAccessMQTT();
 
     protected:
@@ -47,10 +58,18 @@ class EmergencyServiceRSU : public ItsG5BaseService
         void finish() override;
         void handleMessage(cMessage* msg);
         void ConfigNode();
+        //void fillRequest()
+        //void sen
+        vanetza::btp::DataRequestB createRequest();
+
+        void AddAwaitingSOSRequest(MQTTPacket&);
+        void CheckAndAnsSosRequest();
+        std::vector<char*> Location_And_ID_Extractor(const char * );
         //void TestAccessMQTT();
         //void isSubscribed(simsignal_t, omnetpp::cListener);
 
     private:
+        
         void fillRequest(vanetza::btp::DataRequestB&);
         void initUseCases();
         void ProcessSOS(MQTTPacket& SubscribePacket);
@@ -65,8 +84,14 @@ class EmergencyServiceRSU : public ItsG5BaseService
         omnetpp::cListener *Listener;
         omnetpp::cMessage* StartConfigTrigger = nullptr;
         omnetpp::simtime_t StartConfigTime;
-        
+        omnetpp::cMessage* StartCheckingSOS = nullptr;
+        omnetpp::simtime_t CheckSOSTimer;
+        std::list<MQTTPacket*> AwaitingSOS;
 
+
+        AmbulanceSystem* Ambulance_To_Request;
+
+        int SOS_to_Ambulance;
 };
 
 } // namespace artery

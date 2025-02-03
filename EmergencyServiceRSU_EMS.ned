@@ -1,9 +1,9 @@
 package artery.application;
 
-simple EmergencyServiceRSU like ItsG5Service
+simple EmergencyServiceRSU_EMS like ItsG5Service
 {
     parameters:
-        @class(EmergencyServiceRSU);
+        @class(EmergencyServiceRSU_EMS);
         @signal[DenmSent](type=artery::DenmObject);
         @signal[DenmReceived](type=artery::DenmObject);
         int centralPort = default(9326);
@@ -11,12 +11,11 @@ simple EmergencyServiceRSU like ItsG5Service
         string centralAddress = default("server");
         string middlewareModule = default("^.middleware") ;
         string serviceModule = default("^.middleware.EmergencyServiceRSU");
-        double pollingRadius @unit(m) = default(100 m);
-        double pollingInterval @unit(s) = default(1.0 s);
         double StartConfigTime @unit(s) = default(0.1 s);
-        int Num_Bycicles_Cluster = 3; //How many bikes need to be within 100m of each other to be considered a cluster;
+        double CheckSOSTimer @unit(s) = default(0.5 s);
+        string traciCoreModule = default("World.traci.core"); //This is used to access the TraCI manager core on the simulation
+        string AmbulanceModule @mutable = default("World.node[1].middleware.AmbulanceSystem");
 
-        xml useCases;
     gates:
         output udpOut;
         input udpIn;
